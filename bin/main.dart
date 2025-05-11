@@ -5,19 +5,19 @@ import 'dart:io';
 void main() {
   print('Welcome to Tic-Tac-Toe Game');
   String? firstPlayer;
-  while (true) {
-    print('First Player Choose (X) or (O)?');
-    String? input = stdin.readLineSync();
-    if (input != null &&
-        (input.toLowerCase() == 'x' || input.toLowerCase() == 'o')) {
-      firstPlayer = input.toUpperCase();
-      break;
-    } else {
-      print("Invalid Choose. Please try again.");
-    }
-  }
 
   while (true) {
+    while (true) {
+      print('First Player Choose (X) or (O)?');
+      String? input = stdin.readLineSync();
+      if (input != null &&
+          (input.toLowerCase() == 'x' || input.toLowerCase() == 'o')) {
+        firstPlayer = input.toUpperCase();
+        break;
+      } else {
+        print("Invalid Choose. Please try again.");
+      }
+    }
     TicTacToe game = TicTacToe(firstPlayer);
     game.startGame();
     print("Do you want to play again? (y/n)");
@@ -46,9 +46,9 @@ class TicTacToe {
     }
     boardDraw();
     if (isWinner()) {
-      print("Player $currentPlayer wins!");
+      print("Player ($currentPlayer) wins.");
     } else {
-      print("It's a draw!");
+      print("The result is a draw.");
     }
   }
 
